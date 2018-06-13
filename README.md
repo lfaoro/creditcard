@@ -35,6 +35,7 @@ b := card.Encrypt("mySuperSecureSalt")
 fmt.Println(card.First6()) // 123456
 fmt.Println(card.Last4()) // 4567
 fmt.Println(card.Issuer()) // other, visa, amex, ...
+fmt.Println(card.ToJSON()) // {"name":"Leonardo Faoro","number":"1234567891234567","cvv_2":"123","expiry":"06/2019"}
 ```
 
 ## TODO
