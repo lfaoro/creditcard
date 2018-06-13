@@ -38,5 +38,5 @@ fmt.Println(card.Issuer()) // other, visa, amex, ...
 
 ## TODO
 - ~~add helpers for first6, last4, issuer and encryption/decryption~~
-- add issuer identification
+- ~~add issuer identification~~
 - add fraud check patterns using maxMind API
