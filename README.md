@@ -44,6 +44,12 @@ minFraud uses a combination of data points across over a billion transactions to
 - Significantly reduce or eliminate the number of fraudulent transactions your business processes.
 - Significantly reduce or eliminate chargebacks from customers (e.g. if they have been the victim of identity theft and their card has been used in a criminal way).
 ### Quick start
+```bash
+export MAXMIND_USER="123456"
+export MAXMIND_PASSWORD="maxMindServicePassword"
+export MAXMIND_ENDPOINT="https://minfraud.maxmind.com/minfraud/v2.0/insights"
+# NB: alternatively provide a .env file in your app with the above variables.
+```
 ```go
 riskScore, err := maxmind.RiskCheck(card.First6(), card.Last4(), "8.8.8.8", "test@test.com")
 if err != nil {
