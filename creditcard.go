@@ -20,14 +20,14 @@ type CreditCard struct {
 }
 
 // New creates a new CreditCard instance.
-func New(name, number, cvv2, expiry string) (*CreditCard, error) {
+func New(name, number, cvv2, expiry string) *CreditCard {
 	card := &CreditCard{
 		Name:   name,
 		Number: number,
 		CVV2:   cvv2,
 		Expiry: expiry,
 	}
-	return card, nil
+	return card
 }
 
 // NewValidate creates a new CreditCard instance and validates it
