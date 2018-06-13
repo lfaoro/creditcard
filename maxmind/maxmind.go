@@ -23,10 +23,15 @@ var (
 	URL = "https://minfraud.maxmind.com/minfraud/v2.0/insights"
 )
 
+// IP is an IPv4 address.
+type IP string
+
+// Email is an ISO email address.
+type Email string
+
 // RiskCheck queries the minFraud service from MaxMind for Credit Card
 // fraud patterns matching.
-func RiskCheck(firstSixDigits, lastFourDigits, IPAddress, emailAddress string) (score float64, err error) {
-
+func RiskCheck(firstSixDigits, lastFourDigits string, IPAddress IP, emailAddress Email) (score float64, err error) {
 	// Checks
 	if len(firstSixDigits) < 6 || len(lastFourDigits) < 4 {
 		return 0.0, fmt.Errorf("error")
@@ -48,12 +53,12 @@ func RiskCheck(firstSixDigits, lastFourDigits, IPAddress, emailAddress string) (
 		Device: struct {
 			IPAddress string "json:\"ip_address\""
 		}{
-			IPAddress: IPAddress,
+			IPAddress: string(IPAddress),
 		},
 		Email: struct {
 			Address string "json:\"address,omitempty\""
 		}{
-			Address: emailAddress,
+			Address: string(emailAddress),
 		},
 	}
 	b, err := json.Marshal(r)
@@ -105,3 +110,6 @@ func loadEnv() {
 		}
 	}
 }
+
+func BasicRiskCheck()    {}
+func ExtendedRiskCheck() {}

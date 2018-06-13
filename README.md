@@ -38,6 +38,21 @@ fmt.Println(card.Issuer()) // other, visa, amex, ...
 fmt.Println(card.ToJSON()) // {"name":"Leonardo Faoro","number":"1234567891234567","cvv_2":"123","expiry":"06/2019"}
 ```
 
+## Maxmind's minFraud (https://www.maxmind.com/en/minfraud-services)
+minFraud uses a combination of data points across over a billion transactions to provide an accurate risk score for every credit or debit card payment you process. Several variables go into the assessment and scoring, including geolocation, IIN information, reputation checks, IP checks, and device tracking.
+### Benefits
+- Significantly reduce or eliminate the number of fraudulent transactions your business processes.
+- Significantly reduce or eliminate chargebacks from customers (e.g. if they have been the victim of identity theft and their card has been used in a criminal way).
+### Quick start
+```go
+riskScore, err := maxmind.RiskCheck(card.First6(), card.Last4(), "8.8.8.8", "test@test.com")
+if err != nil {
+    log.Println("riskCheck error: ", err)
+}
+```
+
+
+
 ## TODO
 - ~~add helpers for first6, last4, issuer and encryption/decryption~~
 - ~~add issuer identification~~
