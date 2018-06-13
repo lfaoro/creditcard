@@ -27,14 +27,26 @@ func New(name, number, cvv2, expiry string) (*CreditCard, error) {
 		CVV2:   cvv2,
 		Expiry: expiry,
 	}
-	if err := card.validate(); err != nil {
+	return card, nil
+}
+
+// NewValidate creates a new CreditCard instance and validates it
+// using all the checks implemented so far.
+func NewValidate(name, number, cvv2, expiry string) (*CreditCard, error) {
+	card := &CreditCard{
+		Name:   name,
+		Number: number,
+		CVV2:   cvv2,
+		Expiry: expiry,
+	}
+	if err := card.Validate(); err != nil {
 		return card, err
 	}
 	return card, nil
 }
 
-// validate implements various checks to ensure a credit card is valid.
-func (card *CreditCard) validate() error {
+// Validate implements various checks to ensure a credit card is valid.
+func (card *CreditCard) Validate() error {
 	const shortDate = "01/2006"
 	t, err := time.Parse(shortDate, card.Expiry)
 	if err != nil {
