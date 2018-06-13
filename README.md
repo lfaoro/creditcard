@@ -27,6 +27,12 @@ if err := card.Validate(); err != nil {
 if yes := creditcard.Luhn("1234567891234567"); !yes {
     log.Println("Luhn validation failed.")
 }
+
+// Commonly used helpers
+```go
+fmt.Println(card.Last4())
+fmt.Println(card.First6())
+```
 ```
 
 ## TODO
