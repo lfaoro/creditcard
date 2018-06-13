@@ -23,7 +23,7 @@ if err := card.Validate(); err != nil {
     log.Fatal(err)
 }
 
-// Luhn checksum a number.
+// Luhn checksum a number. https://en.wikipedia.org/wiki/Luhn_algorithm
 if yes := creditcard.Luhn("1234567891234567"); !yes {
     log.Println("Luhn validation failed.")
 }
