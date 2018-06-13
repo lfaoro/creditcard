@@ -8,7 +8,10 @@ go get github.com/lfaoro/creditcard
 
 ## Quick start
 ```go
-card := creditcard.New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+card, err := creditcard.New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+if err != nil {
+    log.Fatal(err)
+}
 ```
 
 ## TODO
