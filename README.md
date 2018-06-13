@@ -13,7 +13,7 @@ card := creditcard.New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
 
 // Create a new CreditCard instance and validate it
 // using all the checks implemented so far.
-card, err := creditcard.New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+card, err := creditcard.NewValidate("Leonardo Faoro", "1234567891234567", "123", "06/2019")
 if err != nil {
     log.Fatal(err)
 }
