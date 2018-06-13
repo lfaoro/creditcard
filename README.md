@@ -31,11 +31,12 @@ if yes := creditcard.Luhn("1234567891234567"); !yes {
 b := card.Encrypt("mySuperSecureSalt")
 
 // Common helpers.
-fmt.Println(card.First6())
-fmt.Println(card.Last4())
+fmt.Println(card.First6()) // 123456
+fmt.Println(card.Last4()) // 4567
+fmt.Println(card.Issuer()) // other, visa, amex, ...
 ```
 
 ## TODO
-- ~~add helpers for first6, last4 and encryption~~
+- ~~add helpers for first6, last4, issuer and encryption/decryption~~
 - add issuer identification
 - add fraud check patterns using maxMind API

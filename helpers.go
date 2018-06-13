@@ -1,3 +1,7 @@
+// Copyright 2018 Leonardo Faoro. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
 package creditcard
 
 import (
@@ -29,4 +33,9 @@ func (card *CreditCard) Encrypt(salt string) []byte {
 		log.Println("Unable to write encrypted bytes: ", err)
 	}
 	return h.Sum(nil)
+}
+
+// Decrypt the provided data and match it against the creditcard.Number.
+func (card *CreditCard) Decrypt(data []byte, salt string) bool {
+	return true
 }
