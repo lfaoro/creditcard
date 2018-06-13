@@ -6,6 +6,7 @@ package creditcard
 
 import (
 	"crypto/sha512"
+	"encoding/json"
 	"io"
 	"log"
 )
@@ -36,6 +37,30 @@ func (card *CreditCard) Encrypt(salt string) []byte {
 }
 
 // Decrypt the provided data and match it against the creditcard.Number.
+// NOT IMPLEMENTED
 func (card *CreditCard) Decrypt(data []byte, salt string) bool {
 	return true
+}
+
+// ToJSON returns a string with the CreditCard json marshalled data.
+func (card *CreditCard) ToJSON() string {
+	b, err := json.Marshal(card)
+	// Data is validated, very unlikely that this error may happen
+	// for simplicity, I've decided to omit returning it.
+	if err != nil {
+		log.Println("Unable to Marshall to JSON this CreditCard", err)
+	}
+	return string(b)
+}
+
+// FromJSON returns a CreditCard from a JSON data bytes.
+//
+// JSON data example:
+// {"name":"Leonardo Faoro","number":"1234567891234567","cvv_2":"123","expiry":"06/2019"}
+//
+func FromJSON(data []byte) (card *CreditCard, err error) {
+	if err := json.Unmarshal(data, card); err != nil {
+		return nil, err
+	}
+	return card, nil
 }

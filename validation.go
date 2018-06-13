@@ -65,6 +65,10 @@ func (card *CreditCard) Validate() error {
 //
 // https://en.wikipedia.org/wiki/Luhn_algorithm
 //
+// TODO:
+// - refactor
+// - benchmark
+//
 func Luhn(number string) bool {
 	sum := 0
 	len := len(number)
