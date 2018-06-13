@@ -1,5 +1,5 @@
-# creditcard
-Credit Card structure and validation.
+# Credit Card
+Credit Card structure, helpers and validation.
 
 ## Installation
 ```bash
@@ -28,6 +28,7 @@ if yes := creditcard.Luhn("1234567891234567"); !yes {
     log.Println("Luhn validation failed.")
 }
 
+// Encrypt the CreditCard.Number and get the bytes blob.
 b := card.Encrypt("mySuperSecureSalt")
 
 // Common helpers.
