@@ -33,7 +33,6 @@ if yes := creditcard.Luhn("1234567891234567"); !yes {
 fmt.Println(card.Last4())
 fmt.Println(card.First6())
 ```
-```
 
 ## TODO
 - add issuer identification
