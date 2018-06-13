@@ -19,22 +19,22 @@ type CreditCard struct {
 	Expiry string `json:"expiry,omitempty"`
 }
 
-// NewCreditCard creates a new CreditCard instance.
-func NewCreditCard(name, number, cvv2, expiry string) (CreditCard, error) {
-	card := CreditCard{
+// New creates a new CreditCard instance.
+func New(name, number, cvv2, expiry string) (*CreditCard, error) {
+	card := &CreditCard{
 		Name:   name,
 		Number: number,
 		CVV2:   cvv2,
 		Expiry: expiry,
 	}
-	if err := ValidateCard(card); err != nil {
+	if err := card.validate(); err != nil {
 		return card, err
 	}
 	return card, nil
 }
 
-// ValidateCard implements various checks to ensure a credit card is valid.
-func ValidateCard(card CreditCard) error {
+// validate implements various checks to ensure a credit card is valid.
+func (card *CreditCard) validate() error {
 	const shortDate = "01/2006"
 	t, err := time.Parse(shortDate, card.Expiry)
 	if err != nil {
@@ -78,20 +78,20 @@ func ValidateCard(card CreditCard) error {
 		return fmt.Errorf("Credit Card is a test card: %v", card.Number)
 	}
 	// Validate: Luhn algorithm
-	yes := ValidateLuhn(card.Number)
+	yes := Luhn(card.Number)
 	if !yes {
 		return fmt.Errorf("Credit Card number failed the Luhn algorithm check: %v", card.Number)
 	}
 	return nil
 }
 
-// ValidateLuhn implements the Luhn checksum formula that validates
+// Luhn implements the Luhn checksum formula that validates
 // identification numbers. It was designed to protect against accidental
 // errors, not malicious attacks.
 //
 // https://en.wikipedia.org/wiki/Luhn_algorithm
 //
-func ValidateLuhn(number string) bool {
+func Luhn(number string) bool {
 	sum := 0
 	len := len(number)
 	flip := false
