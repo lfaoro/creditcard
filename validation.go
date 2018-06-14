@@ -83,15 +83,12 @@ func Luhn(number string) bool {
 			num = num * 2
 			if num > 9 {
 				sum += (num)%10 + 1
-				fmt.Println("over9: ", (num)%10+1)
 				continue
 			}
 			sum += num
-			fmt.Println("under9: ", (num)%10+1)
 			continue
 		}
 		sum += num
-		fmt.Println("normal: ", num)
 	}
 	fmt.Println("total: ", sum)
 	n := strconv.Itoa(sum * 9)
