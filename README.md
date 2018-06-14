@@ -55,11 +55,10 @@ riskScore, err := maxmind.RiskCheck(card.First6(), card.Last4(), "8.8.8.8", "tes
 if err != nil {
     log.Println("riskCheck error: ", err)
 }
+fmt.Println(riskScore)
 ```
-
-
 
 ## TODO
 - ~~add helpers for first6, last4, issuer and encryption/decryption~~
 - ~~add issuer identification~~
-- add fraud check patterns using maxMind API
+- ~~add fraud check patterns using maxMind API~~
