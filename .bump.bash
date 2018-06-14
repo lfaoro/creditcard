@@ -27,6 +27,7 @@ case $1 in
 	echo "
     Usage: ./bump.sh major|minor|patch
     "
+	exit 1
 	;;
 esac
 
