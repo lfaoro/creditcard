@@ -6,21 +6,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 func init() {
 	loadEnv()
-	URL = os.Getenv("MAXMIND_ENDPOINT")
 }
 
 var (
 	// URL of maxMind service, overwritten via ENV variable.
-	URL = "https://minfraud.maxmind.com/minfraud/v2.0/insights"
+	URL = ""
 )
 
 // IP is an IPv4 address.
@@ -96,19 +92,6 @@ func encodeAuth() string {
 	pass := os.Getenv("MAXMIND_PASSWORD")
 	combined := fmt.Sprintf("%v:%v", user, pass)
 	return base64.StdEncoding.EncodeToString([]byte(combined))
-}
-
-func loadEnv() {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Failed to load env variables: ", err)
-	}
-	envVars := []string{"MAXMIND_USER", "MAXMIND_PASSWORD", "MAXMIND_ENDPOINT"}
-	for _, s := range envVars {
-		_, yes := os.LookupEnv(s)
-		if !yes {
-			log.Fatal("Missing required ENV variable: ", s)
-		}
-	}
 }
 
 func BasicRiskCheck()    {}

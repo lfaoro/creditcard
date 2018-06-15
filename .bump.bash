@@ -4,7 +4,7 @@ set -x
 
 git describe --abbrev=0 --tags &>/dev/null || git tag -am "first tag" "0.0.1"
 
-VERSION=`git describe --abbrev=0 --tags`
+VERSION=$git describe --abbrev=0 --tags)
 VERSION_BITS=(${VERSION//./ })
 MAJOR=${VERSION_BITS[0]}
 MINOR=${VERSION_BITS[1]}
