@@ -1,6 +1,10 @@
 # Credit Card
 Credit Card structure, helpers and validation.
 
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/lfaoro/creditcard)](https://goreportcard.com/report/github.com/lfaoro/creditcard)
+
+
 ## Installation
 ```bash
 go get github.com/lfaoro/creditcard
@@ -57,8 +61,3 @@ if err != nil {
 }
 fmt.Println(riskScore)
 ```
-
-## TODO
-- ~~add helpers for first6, last4, issuer and encryption/decryption~~
-- ~~add issuer identification~~
-- ~~add fraud check patterns using maxMind API~~
