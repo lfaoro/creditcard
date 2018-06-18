@@ -68,3 +68,9 @@ func ExampleCreditCard_Encrypt() {
 	fmt.Println(card.Encrypt("myAwesomeSalt"))
 	// Output: [165 47 214 73 219 178 174 233 237 64 123 55 75 223 124 220 218 2 174 35 159 132 30 43 57 182 199 175 207 217 113 68 216 15 245 32 55 221 118 95 142 147 23 93 70 222 106 80 68 82 109 112 234 46 226 4 22 56 94 113 9 41 225 202]
 }
+
+func ExampleCreditCard_Issuer() {
+	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
+	fmt.Println(card.Issuer())
+	// Output: visa
+}
