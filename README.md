@@ -13,11 +13,11 @@ go get github.com/lfaoro/creditcard
 ## Quick start
 ```go
 // Create a new CreditCard instance.
-card := creditcard.New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+card := creditcard.New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 
 // Create a new CreditCard instance and validate it
 // using all the checks implemented so far.
-card, err := creditcard.NewValidate("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+card, err := creditcard.NewValidate("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 if err != nil {
     log.Fatal(err)
 }
@@ -28,7 +28,7 @@ if err := card.Validate(); err != nil {
 }
 
 // Luhn checksum a number. https://en.wikipedia.org/wiki/Luhn_algorithm
-if yes := creditcard.Luhn("1234567891234567"); !yes {
+if yes := creditcard.Luhn("4444333322221111"); !yes {
     log.Println("Luhn validation failed.")
 }
 
@@ -39,7 +39,7 @@ b := card.Encrypt("mySuperSecureSalt")
 fmt.Println(card.First6()) // 123456
 fmt.Println(card.Last4()) // 4567
 fmt.Println(card.Issuer()) // other, visa, amex, ...
-fmt.Println(card.ToJSON()) // {"name":"Leonardo Faoro","number":"1234567891234567","cvv_2":"123","expiry":"06/2019"}
+fmt.Println(card.ToJSON()) // {"name":"Leonardo Faoro","number":"4444333322221111","cvv_2":"123","expiry":"06/2019"}
 ```
 
 ## Maxmind's minFraud (https://www.maxmind.com/en/minfraud-services)

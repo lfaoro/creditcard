@@ -25,13 +25,13 @@ func TestNew(t *testing.T) {
 		"ciao",
 		args{
 			name:   "Leonardo Faoro",
-			number: "1234567891234567",
+			number: "4444333322221111",
 			cvv2:   "123",
 			expiry: "06/2019",
 		},
 		&CreditCard{
 			"Leonardo Faoro",
-			"1234567891234567",
+			"4444333322221111",
 			"123",
 			"06/2019",
 		},
@@ -46,31 +46,37 @@ func TestNew(t *testing.T) {
 }
 
 func ExampleNew() {
-	card := New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 	fmt.Println(card.Number)
-	// Output: 1234567891234567
+	// Output: 4444333322221111
 }
 
 func ExampleCreditCard_First6() {
-	card := New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 	fmt.Println(card.First6())
-	// Output: 123456
+	// Output: 444433
 }
 
 func ExampleCreditCard_Last4() {
-	card := New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 	fmt.Println(card.Last4())
-	// Output: 4567
+	// Output: 1111
 }
 
 func ExampleCreditCard_Encrypt() {
-	card := New("Leonardo Faoro", "1234567891234567", "123", "06/2019")
+	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 	fmt.Println(card.Encrypt("myAwesomeSalt"))
-	// Output: [165 47 214 73 219 178 174 233 237 64 123 55 75 223 124 220 218 2 174 35 159 132 30 43 57 182 199 175 207 217 113 68 216 15 245 32 55 221 118 95 142 147 23 93 70 222 106 80 68 82 109 112 234 46 226 4 22 56 94 113 9 41 225 202]
+	// Output: [89 210 45 55 151 142 210 59 208 84 108 251 121 255 44 227 92 245 235 112 38 44 112 212 86 246 207 25 19 117 101 160 91 78 132 95 204 6 138 75 122 66 224 206 140 178 17 119 183 153 113 204 119 53 105 224 109 186 40 76 83 198 120 9]
 }
 
 func ExampleCreditCard_Issuer() {
 	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
 	fmt.Println(card.Issuer())
 	// Output: visa
+}
+
+func ExampleCreditCard_ToJSON() {
+	card := New("Leonardo Faoro", "4444333322221111", "123", "06/2019")
+	fmt.Println(card.ToJSON())
+	// Output: {"name":"Leonardo Faoro","number":"4444333322221111","cvv_2":"123","expiry":"06/2019"}
 }
