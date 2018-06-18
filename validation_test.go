@@ -4,9 +4,12 @@
 
 package creditcard
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestValidateLuhn(t *testing.T) {
+func TestLuhn(t *testing.T) {
 	type args struct {
 		number string
 	}
@@ -28,4 +31,9 @@ func TestValidateLuhn(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleLuhn() {
+	fmt.Println(Luhn("7992739871"))
+	// Output: true
 }

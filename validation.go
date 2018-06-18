@@ -90,7 +90,6 @@ func Luhn(number string) bool {
 		}
 		sum += num
 	}
-	fmt.Println("total: ", sum)
 	n := strconv.Itoa(sum * 9)
 	x := string(n[2])
 	i, _ := strconv.Atoi(x)
