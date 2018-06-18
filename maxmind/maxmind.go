@@ -2,12 +2,10 @@ package maxmind
 
 import (
 	"bytes"
-	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 )
 
 func init() {
@@ -27,6 +25,9 @@ type Email string
 
 // RiskCheck queries the minFraud service from MaxMind for Credit Card
 // fraud patterns matching.
+//
+// Returns just the riskScore value, you could extrad more information by
+// parsing the Response object.
 func RiskCheck(firstSixDigits, lastFourDigits string, IPAddress IP, emailAddress Email) (score float64, err error) {
 	// Checks
 	if len(firstSixDigits) < 6 || len(lastFourDigits) < 4 {
@@ -86,13 +87,3 @@ func RiskCheck(firstSixDigits, lastFourDigits string, IPAddress IP, emailAddress
 	fmt.Println(responseData)
 	return responseData.RiskScore, nil
 }
-
-func encodeAuth() string {
-	user := os.Getenv("MAXMIND_USER")
-	pass := os.Getenv("MAXMIND_PASSWORD")
-	combined := fmt.Sprintf("%v:%v", user, pass)
-	return base64.StdEncoding.EncodeToString([]byte(combined))
-}
-
-func BasicRiskCheck()    {}
-func ExtendedRiskCheck() {}

@@ -5,7 +5,7 @@ import "time"
 type request struct {
 	CreditCard struct {
 		CvvResult      string `json:"cvv_result"`
-		IssuerIDNumber string `json:"issuer_id_number"`
+		IssuerIDNumber string `json:"issuer_id_number"` // first 6 digits
 		Last4Digits    string `json:"last_4_digits"`
 	} `json:"credit_card"`
 	Device struct {
@@ -16,7 +16,7 @@ type request struct {
 	} `json:"email"`
 }
 
-// Response stores all the data returned for MaxMind.
+// Response stores the data returned from MaxMind's API.
 type Response struct {
 	IPAddress struct {
 		Risk    float64 `json:"risk"`

@@ -1,6 +1,8 @@
 package maxmind
 
 import (
+	"encoding/base64"
+	"fmt"
 	"log"
 	"os"
 
@@ -24,4 +26,11 @@ func loadEnv() {
 		return
 	}
 	URL = "https://minfraud.maxmind.com/minfraud/v2.0/insights"
+}
+
+func encodeAuth() string {
+	user := os.Getenv("MAXMIND_USER")
+	pass := os.Getenv("MAXMIND_PASSWORD")
+	combined := fmt.Sprintf("%v:%v", user, pass)
+	return base64.StdEncoding.EncodeToString([]byte(combined))
 }

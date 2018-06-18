@@ -2,8 +2,8 @@
 Credit Card structure, helpers and validation.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Go Doc](https://img.shields.io/badge/go%20doc-read-blue.svg)](https://godoc.org/github.com/lfaoro/creditcard)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lfaoro/creditcard)](https://goreportcard.com/report/github.com/lfaoro/creditcard)
-
 
 ## Installation
 ```bash
@@ -61,3 +61,6 @@ if err != nil {
 }
 fmt.Println(riskScore)
 ```
+
+# Contibuting
+> Any help and suggestions are very welcome and appreciated.
