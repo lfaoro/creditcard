@@ -33,7 +33,7 @@ func NewValidate(name, number, cvv2, expiry string) (*CreditCard, error) {
 		Expiry: expiry,
 	}
 	if err := card.Validate(); err != nil {
-		return card, err
+		return nil, err
 	}
 	return card, nil
 }
