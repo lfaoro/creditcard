@@ -1,5 +1,11 @@
 # Credit Card
-Credit Card structure, helpers and validation.
+
+It implements various checks on a credit card details and reduces human
+error using the Luhn algorithm.
+
+Offers various helpers for data manipulation.
+
+Does risk evaluation using maxMind's minFraud service.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Go Doc](https://img.shields.io/badge/go%20doc-read-blue.svg)](https://godoc.org/github.com/lfaoro/creditcard)
